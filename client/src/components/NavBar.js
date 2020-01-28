@@ -1,0 +1,50 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { useDarkMode } from '../hooks/useDrakMode';
+import Switch from '@material-ui/core/Switch';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+}));
+
+const NavBar = () => {
+  const classes = useStyles();
+
+  const toggleMode = e => {
+    e.preventDefault();
+    setDarkMode(!darkMode);
+  };
+  const [darkMode, setDarkMode] = useDarkMode(toggleMode);
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            {/* <MenuIcon /> */}
+            <Switch
+              checked={darkMode}
+              onChange={toggleMode}
+              value="darkMode"
+            />
+          </IconButton>
+          <Typography variant="h6" color="inherit">
+            Womens World Cup
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
+
+export default NavBar; 
