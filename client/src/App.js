@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <NavBar/>
       <PlayersList/>
-      {/* <span className="greet">Womens World Cup</span> */}
     </div>
   );
 }
